@@ -105,7 +105,7 @@ CREATE TABLE coleccion_patrones_usuario (
  ;
     
   
--- Creamos un usuario (para la conexión de la BD)coleccion_patrones_usuario
+-- Creamos un usuario (para la conexión de la BD)
 create user proyectoDR@'localhost' identified BY 'secreto';
--- Le damos permiso en la base de datos "inversiones_bolsa"
+-- Le damos permiso en la base de datos "ripoll_daniela_proyecto"
 grant all on ripoll_daniela_proyecto.* to proyectoDR@'localhost';
