@@ -11,14 +11,10 @@
                     <p class="card-text">Nombre de usuario: <?php echo e($usuario['nombre']); ?></p>
                     <p class="card-text">Correo electrónico: <?php echo e($usuario['email']); ?></p>
                 </div>
-            </div>
-            <div class="card mb-4">
                 <div class="card-body">
                     <h3 class="card-title">Cursos</h3>
                     
                 </div>
-            </div>
-            <div class="card mb-4">
                 <div class="card-body">
                     <h3 class="card-title">Patrones</h3>
                     

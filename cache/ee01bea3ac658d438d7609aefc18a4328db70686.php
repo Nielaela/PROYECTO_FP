@@ -153,7 +153,7 @@
             <h5 class=" fw-bold mb-4">Enlaces</h5>
             <ul class="menu-list list-unstyled">
               <li class="menu-item mb-2">
-                <a href="#" class="footer-link">Cursos</a>
+                <a href="cursos.php" class="footer-link">Cursos</a>
               </li>
               <li class="menu-item mb-2">
                 <a href="#" class="footer-link">Patrones</a>
@@ -178,7 +178,7 @@
                 <a href="#" class="footer-link">Contacto</a>
               </li>
               <li class="menu-item mb-2">
-                <a href="#" class="footer-link">Mi cuenta</a>
+                <a href="mi_perfil.php" class="footer-link">Mi cuenta</a>
               </li>
             </ul>
           </div>

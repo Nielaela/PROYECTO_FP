@@ -13,14 +13,10 @@
                     <p class="card-text">Nombre de usuario: {{ $usuario['nombre'] }}</p>
                     <p class="card-text">Correo electrónico: {{ $usuario['email'] }}</p>
                 </div>
-            </div>
-            <div class="card mb-4">
                 <div class="card-body">
                     <h3 class="card-title">Cursos</h3>
                     {{-- añadir datos relativos a cursos en posesion, patrones, etc: --}}
                 </div>
-            </div>
-            <div class="card mb-4">
                 <div class="card-body">
                     <h3 class="card-title">Patrones</h3>
                     {{-- añadir datos relativos a cursos en posesion, patrones, etc: --}}
