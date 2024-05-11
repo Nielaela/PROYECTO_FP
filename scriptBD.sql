@@ -7,7 +7,7 @@ CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     rol VARCHAR(50) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
-    pass VARCHAR(50) NOT NULL,
+    pass VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     idPost INT,
     idProyecto INT,
@@ -22,6 +22,8 @@ CREATE TABLE cursos (
     nivel_dificultad VARCHAR(50) NOT NULL,
     duracion VARCHAR(50) NOT NULL,
     precio DECIMAL(10, 2) NOT NULL,
+    imagen VARCHAR(255),
+    manual_pdf VARCHAR(255),
     idUsuario INT
 );
 
