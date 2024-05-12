@@ -75,7 +75,7 @@
         </div>
         <div class="col-sm-6 col-lg-4 col-xl-3 mb-5">
           <div class="card rounded-4 border-0 shadow-sm p-3 position-relative">
-            <a href="blog.html"><img src="../views/plantillas/images/blog_ganch.png" class="img-fluid rounded-3" alt="image"></a>
+            <a href="#"><img src="../views/plantillas/images/blog_ganch.png" class="img-fluid rounded-3" alt="image"></a>
             <div class="card-body p-0">
 
               <div class="d-flex justify-content-between my-3">
@@ -84,7 +84,7 @@
                 </div>
               </div>
 
-              <a href="blog.html">
+              <a href="#">
                 <h5 class="seccion-title py-2 m-0">Visita nuestro blog y comparte tus inquietudes</h5>
               </a>
 
@@ -93,7 +93,7 @@
         </div>
         <div class="col-sm-6 col-lg-4 col-xl-3 mb-5">
           <div class="card rounded-4 border-0 shadow-sm p-3 position-relative">
-            <a href="patrones.html"><img src="../views/plantillas/images/patrones_ganch.png" class="img-fluid rounded-3" alt="image"></a>
+            <a href="#"><img src="../views/plantillas/images/patrones_ganch.png" class="img-fluid rounded-3" alt="image"></a>
             <div class="card-body p-0">
 
               <div class="d-flex justify-content-between my-3">
@@ -102,7 +102,7 @@
                 </div>
               </div>
 
-              <a href="patrones.html">
+              <a href="#">
                 <h5 class="seccion-title py-2 m-0">Ven y descubre nuestra colección de patrones</h5>
               </a>
 
@@ -112,7 +112,7 @@
 
         <div class="col-sm-6 col-lg-4 col-xl-3 mb-5">
           <div class="card rounded-4 border-0 shadow-sm p-3 position-relative">
-            <a href="proyectos.html"><img src="../views/plantillas/images/pexels-anete-lusina-4792086.jpg" class="img-fluid rounded-3" alt="image"></a>
+            <a href="#"><img src="../views/plantillas/images/pexels-anete-lusina-4792086.jpg" class="img-fluid rounded-3" alt="image"></a>
             <div class="card-body p-0">
 
               <div class="d-flex justify-content-between my-3">
@@ -121,7 +121,7 @@
                 </div>
               </div>
 
-              <a href="proyectos.html">
+              <a href="#">
                 <h5 class="seccion-title py-2 m-0">Comparte tus creaciones</h5>
               </a>
 

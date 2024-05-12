@@ -29,13 +29,38 @@
 
 </head>
 <header>
-  <section id="top-nav" >
-    <div class="text-center px-md-3 py-md-2">
-      <p class="text-white py-1 m-0">Únete y disfruta de la plataforma.
-        <span><a href="account.php" class="text-white text-decoration-underline">Accede o registrate</a></span>
-      </p>
+  <section id="top-nav">
+    <div class="container-fluid">
+        <div class="row justify-content-end">
+          <div class="col-md-4 text-center px-md-3 py-md-2 mt-2">
+            <p class="text-white py-1 m-0">Únete y disfruta de la plataforma.
+              <span><a href="account.php" class="text-white text-decoration-underline">Registrate</a></span>
+            </p>
+          </div>
+            <div class="col-md-4 text-center mb-2">
+                @if(isset($_SESSION['usuario']))
+                <!-- Usuario autenticado -->
+                <div class="float-right d-inline-flex mt-2">
+                    <input type="text" value='{{ $_SESSION['usuario']['nombre'] }}' class="form-control mr-2 bg-transparent text-white" disabled>
+                    <a href='cerrar_sesion.php' class='btn btn-primary'>Salir</a>
+                </div>
+                @else
+                <!-- Formulario de inicio de sesión -->
+                <form action="login.php" method="POST" class="form-inline float-right d-inline-flex mt-2">
+                    <div class="form-group mr-2">
+                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre de usuario">
+                    </div>
+                    <div class="form-group mr-2 ">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-3">Iniciar sesión</button>
+                </form>
+                @endif
+            </div>
+        </div>
     </div>
-  </section>
+</section>
+
   <div class="container-fluid">
     <div class="main-logo text-center mt-3">
       <a href="index.php">
@@ -88,9 +113,14 @@
             <li class="nav-item dropdown">
                 <a class="nav-link mx-2 align-items-center" role="button" id="cursos"
                   href="cursos.php" aria-expanded="false">Cursos</a>
-              </li>
+            </li>
 
             <li class="nav-item dropdown">
+              <a class="nav-link mx-2 align-items-center" role="button" id="patrones"
+                href="patrones.php" aria-expanded="false">Patrones</a>
+            </li>
+            
+            {{-- <li class="nav-item dropdown">
               <a class="nav-link mx-2 dropdown-toggle align-items-center" role="button" id="patrones"
                 data-bs-toggle="dropdown" aria-expanded="false">Patrones</a>
               <ul class="dropdown-menu" aria-labelledby="patrones">
@@ -98,7 +128,7 @@
                 <li><a href="patrones-ropa.html" class="dropdown-item">Prendas de ropa</a></li>
                 <li><a href="patrones-accesorios.html" class="dropdown-item">Accesorios</a></li>
               </ul>
-            </li>
+            </li> --}}
 
             <li class="nav-item dropdown">
               <a class="nav-link mx-2 align-items-center" role="button" id="blog"
@@ -211,6 +241,7 @@
 
 
 {{-- Javascript importacion --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../views/plantillas/js/jquery-1.11.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

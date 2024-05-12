@@ -43,6 +43,8 @@ CREATE TABLE patrones (
     nivel_dificultad VARCHAR(50) NOT NULL,
     categoria VARCHAR(50) NOT NULL,
     idUsuario INT
+    imagen VARCHAR(255),
+    manual_patron VARCHAR(255),
 );
 
 CREATE TABLE proyectos (

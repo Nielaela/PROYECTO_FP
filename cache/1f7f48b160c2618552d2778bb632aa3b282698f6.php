@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <button class="btn btn-primary" onclick="mostrarFormulario()">Modificar datos</button>
                 </div>
-                <div id="formularioModificar" style="display: none;">
+                <div id="formulario-accion" style="display: none;">
                     <div class="card-body">
                         <form action="actualizar_perfil.php" method="post">
                             <div class="form-group">
@@ -55,11 +55,7 @@
     </div>
 </div>
 
-<script>
-    function mostrarFormulario() {
-        var formulario = document.getElementById('formularioModificar');
-        formulario.style.display = 'block';
-    }
+<script src="../views/plantillas/js/mostrar_formulario.js"></script>
 </script>
 <?php $__env->stopSection(); ?>
 
