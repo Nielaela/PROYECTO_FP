@@ -1,4 +1,8 @@
 function mostrarFormulario() {
     var formulario = document.getElementById('formulario-accion');
-    formulario.style.display = 'block';
+    if (formulario.style.display === 'none' || formulario.style.display === '') {
+        formulario.style.display = 'block';
+    } else {
+        formulario.style.display = 'none';
+    }
 }

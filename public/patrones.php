@@ -9,13 +9,14 @@ $views = '../views';
 $cache = '../cache';
 $blade = new Blade($views, $cache);
 
+// Verificar si hay un mensaje en la variable de sesión
+$mensaje = isset($_SESSION['mensaje']) ? $_SESSION['mensaje'] : null;
+
+// Limpiar la variable de sesión después de obtener el mensaje
+unset($_SESSION['mensaje']);
+
 // Verificar si hay una sesión iniciada
 $usuarioConectado = isset($_SESSION['usuario']);
-
-// Generar el código JavaScript para luego usarlo en la vista con el script "verificar_sesion"
-echo "<script>";
-echo "var usuarioConectado = " . ($usuarioConectado ? "true" : "false") . ";";
-echo "</script>";
 
 //Ruta para obtener la imágen desde el servidor
 $ruta_imagenes = "../views/plantillas/recursos/recursos_patrones/";
@@ -38,7 +39,9 @@ echo $blade
 ->view()
 ->make('vlista_patrones', [
     'patrones' => $patrones,
-    'ruta_imagenes' => $ruta_imagenes
+    'ruta_imagenes' => $ruta_imagenes,
+    'usuarioConectado' => $usuarioConectado,
+    'mensaje' => $mensaje
 ])
 ->render();
 ?>

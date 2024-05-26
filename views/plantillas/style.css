@@ -186,6 +186,29 @@ body {
   --bs-btn-disabled-border-color: var(--primary-color);
 }
 
+.btn-secondary {
+  font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-left: 30px;
+  border-radius: 30px; /* Bordes más redondeados */
+  padding: 0.25rem 0.5rem; /* Menos espacio de relleno */
+  transition: all 0.3s ease-in;
+  --bs-btn-color: var(--light-color);
+  --bs-btn-bg: var(--primary-color);
+  --bs-btn-border-color: var(--primary-color);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #A1A2FA;
+  --bs-btn-hover-border-color: #F7EA9F;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: var(--light-color);
+  --bs-btn-active-bg: var(--primary-color);
+  --bs-btn-active-border-color: var(--primary-color);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--light-color);
+  --bs-btn-disabled-bg: #d3d7dd;
+  --bs-btn-disabled-border-color: var(--primary-color);
+}
 .btn-outline-primary {
   font-size: 1rem;
   text-transform: uppercase;
@@ -714,6 +737,7 @@ iconify-icon.video-icon {
 iconify-icon.video-icon:hover {
   font-size: 35px;
 }
+
 
 /* Estilos para formularios */
 /* Estilos para el contenedor principal */

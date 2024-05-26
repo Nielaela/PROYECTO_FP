@@ -3,8 +3,14 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="container">
+     <!-- Mensaje para usuarios no conectados -->
+     <?php if(!$usuarioConectado): ?>
+     <div class="alert alert-warning mt-2" role="alert">
+        ¡Inicia sesión para poder descargarte los patrones!.
+     </div>
+     <?php endif; ?>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
             <div class="card">
                 <div class="card-header">
                     <h6 class="card-title">
@@ -31,7 +37,7 @@
             <button class="btn btn-primary mt-2" id="boton-subir-patron" onclick="mostrarFormulario()">Agregar Nuevo Patrón</button>
             <!-- Formulario para subir un nuevo patrón -->
             <div id="formulario-accion" style="display: none;">
-                <div class="card mt-4">
+                <div class="card">
                     <div class="card-body">
                         <form action="agregar_patron.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
@@ -77,6 +83,9 @@
         </div>
     </div>
     <div class="row mt-4">
+        <?php if($mensaje): ?>
+        <div class="alert alert-info"><?php echo e($mensaje); ?></div>
+        <?php endif; ?>
         <?php $__currentLoopData = $patrones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $patron): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col-md-4 mb-4 <?php echo e($patron['categoria']); ?>">
                 <div class="card">
@@ -89,17 +98,28 @@
                         <p class="card-text">Dificultad: <?php echo e($patron['nivel_dificultad']); ?></p>
                         <p class="card-text">Categoría: <?php echo e($patron['categoria']); ?></p>
                         <p class="card-text">Subido por: <?php echo e($patron['nombre_usuario']); ?></p>
-                        <form action="detalles_patron.php" method="GET">
-                            <input type="hidden" name="id" value="<?php echo e($patron['id']); ?>">
-                            <button type="submit" class="btn btn-primary">Ver detalles</button>
-                        </form>
+                        <?php if($usuarioConectado): ?>
+                        <div class="d-flex">
+                            <form action="detalles_patron.php" method="GET">
+                                <input type="hidden" name="id" value="<?php echo e($patron['id']); ?>">
+                                <button type="submit" class="btn btn-primary">Ver detalles</button>
+                            </form> 
+                            <form action="guardar_patron.php" method="POST">
+                                <input type="hidden" name="id_patron" value="<?php echo e($patron['id']); ?>">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </form>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
+                
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 </div>
-
+<script>
+     var usuarioConectado = <?php echo json_encode($usuarioConectado, 15, 512) ?>;
+</script>
 <script src="../views/plantillas/js/mostrar_formulario.js"></script>
 <script src="../views/plantillas/js/verificar_sesion.js"></script>
 <script src="../views/plantillas/js/filtrado_patron_categoria.js"></script>

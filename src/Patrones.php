@@ -55,17 +55,21 @@ class Patrones extends Conexion
 
     function verPatron($id_patron)
     {
-        $consulta = "SELECT * FROM patrones WHERE id = ?";
+        $consulta = "SELECT p.*, u.nombre AS nombre_usuario 
+                     FROM patrones p
+                     JOIN usuarios u ON p.idUsuario = u.id
+                     WHERE p.id = ?";
         $stmt = $this->conexion->prepare($consulta);
-
+    
         try {
             $stmt->execute([$id_patron]);
-            $curso = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $curso;
+            $patron = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $patron;
         } catch (PDOException $ex) {
-            throw new Exception("Error al obtener el patron: " . $ex->getMessage());
+            throw new Exception("Error al obtener el patrón: " . $ex->getMessage());
         }
     }
+    
 
     function verListaPatrones()
     {

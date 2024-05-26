@@ -95,7 +95,7 @@
         </div>
         <div class="col-sm-6 col-lg-4 col-xl-3 mb-5">
           <div class="card rounded-4 border-0 shadow-sm p-3 position-relative">
-            <a href="#"><img src="../views/plantillas/images/patrones_ganch.png" class="img-fluid rounded-3" alt="image"></a>
+            <a href="patrones.php"><img src="../views/plantillas/images/patrones_ganch.png" class="img-fluid rounded-3" alt="image"></a>
             <div class="card-body p-0">
 
               <div class="d-flex justify-content-between my-3">
@@ -104,7 +104,7 @@
                 </div>
               </div>
 
-              <a href="#">
+              <a href="patrones.php">
                 <h5 class="seccion-title py-2 m-0">Ven y descubre nuestra colección de patrones</h5>
               </a>
 

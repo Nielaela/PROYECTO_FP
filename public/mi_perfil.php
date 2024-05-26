@@ -47,6 +47,8 @@ $datosUsuario = $_SESSION['usuario'];
 // Instanciar la clase Usuarios para obtener los datos del usuario desde la base de datos
 $usuario = new Usuarios();
 $datosUsuarioBD = $usuario->verDatosUsuario($datosUsuario['id']);
+// Obtener los patrones en posesión del usuario
+$patronesEnPosesion = $usuario->obtenerColeccionPatrones($datosUsuario['id']);
 
 // Instancia de Blade
 $views = '../views';
@@ -54,5 +56,11 @@ $cache = '../cache';
 $blade = new Blade($views, $cache);
 
 // Renderizar la vista de Blade
-echo $blade->view()->make('vmi_perfil', ['usuario' => $datosUsuarioBD])->render();
+echo $blade
+->view()
+->make('vmi_perfil', [
+    'usuario' => $datosUsuarioBD,
+    'patronesEnPosesion' => $patronesEnPosesion
+    ])
+    ->render();
 ?>

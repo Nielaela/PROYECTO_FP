@@ -144,5 +144,79 @@ class Usuarios extends Conexion
         }
     }
 
-    // faltan funciones con inner join de cursos y patrones que obtenga el usuario
+    //funciones de almacenaje de "descargas" de los usuarios
+    function agregarCursoAColeccion($idUsuario, $idCurso)
+    {
+        $consulta = "INSERT INTO formacion_usuarios (idUsuario, idCurso) VALUES (?, ?)";
+        $stmt = $this->conexion->prepare($consulta);
+
+        try {
+            $stmt->execute([$idUsuario, $idCurso]);
+            return true; // Éxito al agregar el curso a la colección
+        } catch (PDOException $ex) {
+            throw new Exception("Error al agregar el curso a la colección: " . $ex->getMessage());
+        }
+    }
+
+    function agregarPatronAColeccion($idUsuario, $idPatron)
+    {
+        $consulta = "INSERT INTO coleccion_patrones_usuario (idUsuario, idPatron) VALUES (?, ?)";
+        $stmt = $this->conexion->prepare($consulta);
+
+        try {
+            $stmt->execute([$idUsuario, $idPatron]);
+            return true; // Éxito al agregar el patrón a la colección
+        } catch (PDOException $ex) {
+            throw new Exception("Error al agregar el patrón a la colección: " . $ex->getMessage());
+        }
+    }
+
+    //funciones para recoger los datos 
+    function obtenerColeccionCursos($idUsuario)
+    {
+        $consulta = "SELECT c.* FROM cursos c 
+                 INNER JOIN formacion_usuarios fc ON c.id = fu.idCurso 
+                 WHERE fu.idUsuario = ?";
+        $stmt = $this->conexion->prepare($consulta);
+
+        try {
+            $stmt->execute([$idUsuario]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); // Devuelve la colección de cursos del usuario
+        } catch (PDOException $ex) {
+            throw new Exception("Error al obtener la colección de cursos del usuario: " . $ex->getMessage());
+        }
+    }
+
+    function obtenerColeccionPatrones($idUsuario)
+    {
+        $consulta = "SELECT p.* FROM patrones p 
+                 INNER JOIN coleccion_patrones_usuario cpu ON p.id = cpu.idPatron 
+                 WHERE cpu.idUsuario = ?";
+        $stmt = $this->conexion->prepare($consulta);
+
+        try {
+            $stmt->execute([$idUsuario]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); // Devuelve la colección de patrones del usuario
+        } catch (PDOException $ex) {
+            throw new Exception("Error al obtener la colección de patrones del usuario: " . $ex->getMessage());
+        }
+    }
+
+    //funciones de verificacion
+    public function patronEnColeccion($id_usuario, $id_patron) {
+        // Realizar una consulta a la base de datos para verificar si el patrón está en la colección del usuario
+        $consulta = "SELECT COUNT(*) AS cantidad FROM coleccion_patrones_usuario WHERE idUsuario = ? AND idPatron = ?";
+        $stmt = $this->conexion->prepare($consulta);
+
+        try {
+            $stmt->execute([$id_usuario, $id_patron]);
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            $cantidad = $resultado['cantidad'];
+
+            // Si la cantidad es mayor que cero, significa que el patrón está en la colección del usuario
+            return $cantidad > 0;
+        } catch (PDOException $ex) {
+            throw new Exception("Error al verificar el patrón en la colección: " . $ex->getMessage());
+        }
+    }
 }

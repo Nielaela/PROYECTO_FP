@@ -1,3 +1,7 @@
+<?php
+// Define la variable que contiene el nombre de la página actual
+$current_page = basename($_SERVER['PHP_SELF']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,78 +89,45 @@
     </div>
   </div>
 
-  <nav class="main-menu d-flex navbar navbar-expand-lg p-2 py-2 p-lg-3 py-lg-3 ">
+  <nav class="main-menu d-flex navbar navbar-expand-lg p-2 py-2 p-lg-3 py-lg-3">
     <div class="container-fluid">
-      <!-- <div class="main-logo d-lg-none">
-        <a href="index.html">
-          <img src="../views/plantillas/images/Logotipo_principal_fondo_transparente.png" alt="logo" class="img-fluid">
-        </a>
-      </div> -->
+        <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header mt-3">
+                <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
 
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-
-        <div class="offcanvas-header mt-3">
-          <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div class="offcanvas-body justify-content-center">
+                <ul class="navbar-nav menu-list list-unstyled align-items-lg-center d-flex gap-md-3 mb-0">
+                    <li class="nav-item">
+                        <a href="index.php" class="nav-link mx-2 <?= $current_page == 'index.php' ? 'active' : '' ?>">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-2 align-items-center <?= $current_page == 'cursos.php' ? 'active' : '' ?>" href="cursos.php" aria-expanded="false">Cursos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-2 align-items-center <?= $current_page == 'patrones.php' ? 'active' : '' ?>" href="patrones.php" aria-expanded="false">Patrones</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-2 align-items-center <?= $current_page == 'blog.php' ? 'active' : '' ?>" href="#" aria-expanded="false">Blog</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-2 align-items-center <?= $current_page == 'proyectos.php' ? 'active' : '' ?>" href="#" aria-expanded="false">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link mx-2 <?= $current_page == 'contacto.php' ? 'active' : '' ?>">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-2 align-items-center <?= $current_page == 'mi_perfil.php' ? 'active' : '' ?>" href="mi_perfil.php" aria-expanded="false">Mi cuenta</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="offcanvas-body justify-content-center">
-          <ul class="navbar-nav menu-list list-unstyled align-items-lg-center d-flex gap-md-3 mb-0">
-            <li class="nav-item">
-              <a href="index.php" class="nav-link mx-2 active">Inicio</a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link mx-2 align-items-center" role="button" id="cursos"
-                  href="cursos.php" aria-expanded="false">Cursos</a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link mx-2 align-items-center" role="button" id="patrones"
-                href="patrones.php" aria-expanded="false">Patrones</a>
-            </li>
-            
-            {{-- <li class="nav-item dropdown">
-              <a class="nav-link mx-2 dropdown-toggle align-items-center" role="button" id="patrones"
-                data-bs-toggle="dropdown" aria-expanded="false">Patrones</a>
-              <ul class="dropdown-menu" aria-labelledby="patrones">
-                <li><a href="patrones-amigurumi.html" class="dropdown-item">Amigurumis</a></li>
-                <li><a href="patrones-ropa.html" class="dropdown-item">Prendas de ropa</a></li>
-                <li><a href="patrones-accesorios.html" class="dropdown-item">Accesorios</a></li>
-              </ul>
-            </li> --}}
-
-            <li class="nav-item dropdown">
-              <a class="nav-link mx-2 align-items-center" role="button" id="blog"
-              href="#" aria-expanded="false">blog</a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link mx-2 align-items-center" role="button" id="proyectos"
-                href="#" aria-expanded="false">Proyectos</a>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link mx-2">Contacto</a>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link mx-2 align-items-center" role="button" id="miCuenta"
-              href="mi_perfil.php" aria-expanded="false">Mi cuenta</a>
-            </li>
-
-          </ul>
-
-        </div>
-      </div>
-
     </div>
-
-  </nav>
+</nav>
   {{-- contenido de paginas --}}
 @yield('content') 
 
@@ -186,7 +157,7 @@
                 <a href="cursos.php" class="footer-link">Cursos</a>
               </li>
               <li class="menu-item mb-2">
-                <a href="#" class="footer-link">Patrones</a>
+                <a href="patrones.php" class="footer-link">Patrones</a>
               </li>
               <li class="menu-item mb-2">
                 <a href="#" class="footer-link">Blog</a>

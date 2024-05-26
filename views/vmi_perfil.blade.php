@@ -4,7 +4,7 @@
 @section('encabezado', 'Mi Perfil')
 
 @section('content')
-<div class="container">
+<div class="container mt-4 mb-4">
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-4">
@@ -19,7 +19,24 @@
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Patrones</h3>
-                    {{-- añadir datos relativos a cursos en posesion, patrones, etc: --}}
+                    @if($patronesEnPosesion)
+                    <ul>
+                        @foreach($patronesEnPosesion as $patron)
+                            <li style="display: flex; align-items: center;">
+                                <span>{{ $patron['nombre'] }}</span>
+                                <span>
+                                    <form action="detalles_patron.php" method="GET">
+                                        <input type="hidden" name="id" value="{{ $patron['id'] }}">
+                                        <button type="submit" class="btn btn-secondary">Ver detalles</button>
+                                    </form>
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul>
+                    
+                @else
+                    <p>No tienes ningún patrón en posesión actualmente.</p>
+                @endif
                 </div>
             </div>
         </div>

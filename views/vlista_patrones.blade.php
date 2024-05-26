@@ -5,8 +5,14 @@
 
 @section('content')
 <div class="container">
+     <!-- Mensaje para usuarios no conectados -->
+     @if (!$usuarioConectado)
+     <div class="alert alert-warning mt-2" role="alert">
+        ¡Inicia sesión para poder descargarte los patrones!.
+     </div>
+     @endif
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
             <div class="card">
                 <div class="card-header">
                     <h6 class="card-title">
@@ -33,7 +39,7 @@
             <button class="btn btn-primary mt-2" id="boton-subir-patron" onclick="mostrarFormulario()">Agregar Nuevo Patrón</button>
             <!-- Formulario para subir un nuevo patrón -->
             <div id="formulario-accion" style="display: none;">
-                <div class="card mt-4">
+                <div class="card">
                     <div class="card-body">
                         <form action="agregar_patron.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
@@ -79,6 +85,9 @@
         </div>
     </div>
     <div class="row mt-4">
+        @if ($mensaje)
+        <div class="alert alert-info">{{ $mensaje }}</div>
+        @endif
         @foreach($patrones as $patron)
             <div class="col-md-4 mb-4 {{ $patron['categoria'] }}">
                 <div class="card">
@@ -91,17 +100,28 @@
                         <p class="card-text">Dificultad: {{ $patron['nivel_dificultad'] }}</p>
                         <p class="card-text">Categoría: {{ $patron['categoria'] }}</p>
                         <p class="card-text">Subido por: {{ $patron['nombre_usuario'] }}</p>
-                        <form action="detalles_patron.php" method="GET">
-                            <input type="hidden" name="id" value="{{ $patron['id'] }}">
-                            <button type="submit" class="btn btn-primary">Ver detalles</button>
-                        </form>
+                        @if ($usuarioConectado)
+                        <div class="d-flex">
+                            <form action="detalles_patron.php" method="GET">
+                                <input type="hidden" name="id" value="{{ $patron['id'] }}">
+                                <button type="submit" class="btn btn-primary">Ver detalles</button>
+                            </form> 
+                            <form action="guardar_patron.php" method="POST">
+                                <input type="hidden" name="id_patron" value="{{ $patron['id'] }}">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </form>
+                        </div>
+                        @endif
                     </div>
                 </div>
+                
             </div>
         @endforeach
     </div>
 </div>
-
+<script>
+     var usuarioConectado = @json($usuarioConectado);
+</script>
 <script src="../views/plantillas/js/mostrar_formulario.js"></script>
 <script src="../views/plantillas/js/verificar_sesion.js"></script>
 <script src="../views/plantillas/js/filtrado_patron_categoria.js"></script>

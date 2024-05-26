@@ -2,7 +2,7 @@
 <?php $__env->startSection('encabezado', 'Mi Perfil'); ?>
 
 <?php $__env->startSection('content'); ?>
-<div class="container">
+<div class="container mt-4 mb-4">
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-4">
@@ -17,7 +17,24 @@
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Patrones</h3>
+                    <?php if($patronesEnPosesion): ?>
+                    <ul>
+                        <?php $__currentLoopData = $patronesEnPosesion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $patron): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li style="display: flex; align-items: center;">
+                                <span><?php echo e($patron['nombre']); ?></span>
+                                <span>
+                                    <form action="detalles_patron.php" method="GET">
+                                        <input type="hidden" name="id" value="<?php echo e($patron['id']); ?>">
+                                        <button type="submit" class="btn btn-secondary">Ver detalles</button>
+                                    </form>
+                                </span>
+                            </li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>
                     
+                <?php else: ?>
+                    <p>No tienes ningún patrón en posesión actualmente.</p>
+                <?php endif; ?>
                 </div>
             </div>
         </div>
