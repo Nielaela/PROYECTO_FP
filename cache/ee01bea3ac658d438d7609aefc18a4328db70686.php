@@ -36,11 +36,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
   <section id="top-nav">
     <div class="container-fluid">
         <div class="row justify-content-end">
+          <?php if(!isset($_SESSION['usuario'])): ?>
           <div class="col-md-4 text-center px-md-3 py-md-2 mt-2">
             <p class="text-white py-1 m-0">Únete y disfruta de la plataforma.
               <span><a href="account.php" class="text-white text-decoration-underline">Registrate</a></span>
             </p>
           </div>
+          <?php endif; ?>
             <div class="col-md-4 text-center mb-2">
                 <?php if(isset($_SESSION['usuario'])): ?>
                 <!-- Usuario autenticado -->
@@ -205,6 +207,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
       <div class="row py-3">
         <div class="col-md-6 copyright">
           <p>© 2024 Tejedores de sueños. Todos los derechos reservados.</p>
+          <p>Proyecto fin de ciclo DAW. <b>Daniela Ripoll</b> </p>
         </div>
       </div>
     </div>

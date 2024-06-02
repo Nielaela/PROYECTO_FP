@@ -42,9 +42,9 @@ CREATE TABLE patrones (
     descripcion VARCHAR(255) NOT NULL,
     nivel_dificultad VARCHAR(50) NOT NULL,
     categoria VARCHAR(50) NOT NULL,
-    idUsuario INT
+    idUsuario INT,
     imagen VARCHAR(255),
-    manual_patron VARCHAR(255),
+    manual_patron VARCHAR(255)
 );
 
 CREATE TABLE proyectos (
@@ -77,7 +77,7 @@ CREATE TABLE formacion_usuarios (
 CREATE TABLE coleccion_patrones_usuario (
     idUsuario INT,
     idPatron INT,
-    fecha_adquisicion DATE NOT NULL,
+    fecha_adquisicion DATE NULL,
     FOREIGN KEY (idUsuario) REFERENCES usuarios(id),
     FOREIGN KEY (idPatron) REFERENCES patrones(id),
     PRIMARY KEY (idUsuario, idPatron)
