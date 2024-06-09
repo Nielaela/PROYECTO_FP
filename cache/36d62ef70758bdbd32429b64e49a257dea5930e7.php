@@ -20,7 +20,7 @@
                         <h5 class="card-title"><?php echo e($curso['titulo']); ?></h5>
                         <p class="card-text"><?php echo e($curso['descripcion']); ?></p>
                         <p class="card-text">Dificultad: <?php echo e($curso['nivel_dificultad']); ?></p>
-                        <p class="card-text">Precio: $<?php echo e($curso['precio']); ?></p>
+                        <p class="card-text">Precio: <?php echo e($curso['precio']); ?> €</p>
                         <?php if($usuarioConectado): ?>
                         <form action="detalles_curso.php" method="GET">
                             <input type="hidden" name="id" value="<?php echo e($curso['id']); ?>">
